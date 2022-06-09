@@ -1,32 +1,186 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>python安装及pip配置 | kk</title><meta name="keywords" content="Python,pip,ubuntu"><meta name="author" content="wkless"><meta name="copyright" content="wkless"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本文由 简悦 SimpRead 转码， 原文地址 www.cppcns.com   这篇文章主要介绍了 Ubuntu16 安装 Python3.9 的实现步骤，文中通过示例代码介绍的非常详细，对大家的学习或者工作具有一定的参考学习价值，需要的朋友们下面随着小编来一起学习学习吧  这篇文章主要介绍了 Ubuntu16 安装 Python3.9 的实现步骤，文中通过示例代码介绍的非常详细，对大家的学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python安装及pip配置">
+<meta property="og:url" content="http://example.com/post/fc64799c.html">
+<meta property="og:site_name" content="kk">
+<meta property="og:description" content="本文由 简悦 SimpRead 转码， 原文地址 www.cppcns.com   这篇文章主要介绍了 Ubuntu16 安装 Python3.9 的实现步骤，文中通过示例代码介绍的非常详细，对大家的学习或者工作具有一定的参考学习价值，需要的朋友们下面随着小编来一起学习学习吧  这篇文章主要介绍了 Ubuntu16 安装 Python3.9 的实现步骤，文中通过示例代码介绍的非常详细，对大家的学">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1526925539332-aa3b66e35444">
+<meta property="article:published_time" content="2021-07-20T13:08:13.000Z">
+<meta property="article:modified_time" content="2022-06-09T07:09:39.299Z">
+<meta property="article:author" content="wkless">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="pip">
+<meta property="article:tag" content="ubuntu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1526925539332-aa3b66e35444"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/post/fc64799c"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'python安装及pip配置',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-09 15:09:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable && theme.reward.QR_code
-      !=partial('includes/post/reward', {}, {cache: true})
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1526925539332-aa3b66e35444')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">kk</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">python安装及pip配置</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-07-20T13:08:13.000Z" title="Created 2021-07-20 21:08:13">2021-07-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-09T07:09:39.299Z" title="Updated 2022-06-09 15:09:39">2022-06-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="python安装及pip配置"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>本文由 <a target="_blank" rel="noopener" href="http://ksria.com/simpread/">简悦 SimpRead</a> 转码， 原文地址 <a target="_blank" rel="noopener" href="http://www.cppcns.com/jiaoben/python/369691.html">www.cppcns.com</a></p>
+</blockquote>
+<blockquote>
+<p>这篇文章主要介绍了 Ubuntu16 安装 Python3.9 的实现步骤，文中通过示例代码介绍的非常详细，对大家的学习或者工作具有一定的参考学习价值，需要的朋友们下面随着小编来一起学习学习吧</p>
+</blockquote>
+<p>这篇文章主要介绍了 Ubuntu16 安装 Python3.9 的实现步骤，文中通过示例代码介绍的非常详细，对大家的学习或者工作具有一定的参考学习价值，需要的朋友们下面随着小编来一起学习学习吧</p>
+<p>我是使用源码编译的方式安装的，网上有的可以添加 ppa 源进行在线安装，但我试<a target="_blank" rel="noopener" href="http://www.cppcns.com/" title="编程客栈">编程客栈</a>了行不通，所以还是采用源码安装</p>
+<h3 id="1、安装编译依赖项"><a href="#1、安装编译依赖项" class="headerlink" title="1、安装编译依赖项"></a>1、安装编译依赖项</h3><figure class="highlight q"><table><tr><td class="code"><pre><code class="hljs q">sudo apt install -y wget build-essential libreadline-<span class="hljs-built_in">dev</span> libncursesw5-<span class="hljs-built_in">dev</span> libssl-<span class="hljs-built_in">dev</span> libsqlite3-<span class="hljs-built_in">dev</span> tk-<span class="hljs-built_in">dev</span> libgdbm-<span class="hljs-built_in">dev</span> libc6-<span class="hljs-built_in">dev</span> libbz2-<span class="hljs-built_in">dev</span> libffi-<span class="hljs-built_in">dev</span> zlib1g-<span class="hljs-built_in">dev</span><br><br></code></pre></td></tr></table></figure>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
+<p>有的博文说在这一步需要升级<code>pip</code>，但我认为没必要，因为安装好 <code>[python](http://www.cppcns.com/jiaoben/python/ &quot;python&quot;)</code>后里面有最新的<code>pip</code>，修改软链接即可</p>
+<h3 id="2、下载源码包"><a href="#2、下载源码包" class="headerlink" title="2、下载源码包"></a>2、下载源码包</h3><p>下载你需要安装的包，官网下载会特别慢，我是用手机先从官网下载之后传到电脑上的，速度快很多</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><code class="hljs maxima">wget https://www.python.org/ftp/python/3http://www.cppcns.com<span class="hljs-number">.9</span><span class="hljs-number">.0</span>/Python-<span class="hljs-number">3.9</span><span class="hljs-number">.0b4</span>.tgz<br> <br>tar -zxvf Python-<span class="hljs-number">3.9</span><span class="hljs-number">.0b4</span>.tgz # 解压源码包<br><br></code></pre></td></tr></table></figure>
 
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
+<h3 id="3、编译安装"><a href="#3、编译安装" class="headerlink" title="3、编译安装"></a>3、编译安装</h3><p>进入到刚才解压的包目录中</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk"><span class="hljs-comment">#编译参数设置</span><br>.<span class="hljs-regexp">/configure --prefix=/u</span>sr<span class="hljs-regexp">/local/</span>python3<br> <br><span class="hljs-comment">#编译</span><br>make<br> <br><span class="hljs-comment">#安装</span><br>sudo make install<br><br></code></pre></td></tr></table></figure>
 
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+<p><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/20210720211343.png"></p>
+<p>出现这个提示表示安装成功，下面设置软链接</p>
+<h3 id="4、设置软链接"><a href="#4、设置软链接" class="headerlink" title="4、设置软链接"></a>4、设置软链接</h3><p>执行<code>ll /usr/local/python3/bin</code>查看安装后的可执行文件，其中<code>python3</code>是指向<code>python3.9</code>的软链接，<code>pip3</code>和<code>pip3.9</code>里面的内容一样，只需要在<code>/usr/bin/</code>目录下添加这两个文件的软链接即可</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/obipjhvkr0q.jpg"></p>
+<p>执行<code>ll /usr/bin | grep python</code>先查看之前<code>python</code>对应软链接，每个人情况都不一样，但设置方法是一样的，删除原来的软链接，然后重新指定即可  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/f2b3j1somvq.jpg"></p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">sudo rm python<br>sudo rm python3 <span class="hljs-comment">#并不会删除 python2.7 和 python3.5</span><br> <br>sudo ln http:<span class="hljs-regexp">//</span>www.cppcns.com-s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/python3/</span>bin<span class="hljs-regexp">/python3.9 /u</span>sr<span class="hljs-regexp">/bin/</span>python3<br>sudo ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/python3/</span>bin<span class="hljs-regexp">/python3.9 /u</span>sr<span class="hljs-regexp">/bin/</span>python<br> <br><span class="hljs-comment">#为 pip 设置软链编程客栈接</span><br>sudo ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/python3/</span>bin<span class="hljs-regexp">/pip3.9 /u</span>sr<span class="hljs-regexp">/bin/</span>pip3<br>sudo ln -s <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/python3/</span>bin<span class="hljs-regexp">/pip3.9 /u</span>sr<span class="hljs-regexp">/bin/</span>pip<br><br></code></pre></td></tr></table></figure>
+
+<p>执行<code>ll /usr/bin | grep python</code>和<code>ll /usr/bin | grep pip</code>查看设置后的软链接，设置 ok  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/p4rh02bndfp.jpg">  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/i1shlnlr0y3.jpg"></p>
+<h3 id="5、pip-错误处理"><a href="#5、pip-错误处理" class="headerlink" title="5、pip 错误处理"></a>5、pip 错误处理</h3><p>安装完成以后还有个事就是在使用<code>pip</code>安装第三方库会出现问题，执行<code>pip list</code>，如下：  </p>
+<p><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/4nobu3ajbc1.jpg">  </p>
+<p>意思是在执行<code>lsb_release -a</code>这个命令出现问题，<code>lsb_release</code>这个文件在目录<code>/usr/bin</code>下</p>
+<p>有的博文说删了这个文件就 ok，不删也可以，执行<code>sudo vi /usr/bin/lsb_release</code>将第一行中的<code>python3</code>改为<code>python3.5</code>，因为之前的<code>python3</code>是指向<code>python3.5</code>的，让它使用原来的解释器即可。然后再执行<code>pip list</code>，已经没有问题了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/l3rm0vpmifm.jpg"><br><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/mvcop2qiuao.jpg"></p>
+<h3 id="6、添加第三方库安装源"><a href="#6、添加第三方库安装源" class="headerlink" title="6、添加第三方库安装源"></a>6、添加第三方库安装源</h3><p>玩<code>python</code>需要安装很多的第三方模块，直接用<code>pip</code>下载安装会比较慢，可添加国内镜像源地址，下载的文件时一样的，但速度会快很多。配置方法：</p>
+<p>a. 找到下列文件，如果不存在，之间创建相应目录和文件即可</p>
+<p>b. 在上述文件中添加或修改：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><code class="hljs pgsql">[<span class="hljs-keyword">global</span>] <br><span class="hljs-keyword">index</span>-url=http://pypi.douban.com/simple/<br>[install]<br><span class="hljs-keyword">trusted</span>-host=pypi.douban.com<br><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/eev2ozkeneg.jpg"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">wkless</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/post/fc64799c.html">http://example.com/post/fc64799c.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/pip/">pip</a><a class="post-meta__tags" href="/tags/ubuntu/">ubuntu</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1526925539332-aa3b66e35444" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/post/fef49edf.html"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1563089145-599997674d42" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">wsl2固定ip方案</div></div></a></div><div class="next-post pull-right"><a href="/post/dc809001.html"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1607799131608-9a22dd60e25e" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">解决wsl-remote无法连接</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/post/dc809001.html" title="解决wsl-remote无法连接"><img class="cover" src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1607799131608-9a22dd60e25e" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-20</div><div class="title">解决wsl-remote无法连接</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wkless</div><div class="author-info__description">学习记录网站</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="toc-number">1.</span> <span class="toc-text">1、安装编译依赖项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81%E5%8C%85"><span class="toc-number">2.</span> <span class="toc-text">2、下载源码包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">3、编译安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E8%AE%BE%E7%BD%AE%E8%BD%AF%E9%93%BE%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">4、设置软链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81pip-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">5、pip 错误处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81%E6%B7%BB%E5%8A%A0%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93%E5%AE%89%E8%A3%85%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">6、添加第三方库安装源</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/3b7b10e0.html" title="docker固定内网ip"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/202206091443862.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker固定内网ip"/></a><div class="content"><a class="title" href="/post/3b7b10e0.html" title="docker固定内网ip">docker固定内网ip</a><time datetime="2022-06-09T06:53:18.000Z" title="Created 2022-06-09 14:53:18">2022-06-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/878a097a.html" title="群辉docker配置Joplin Server"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1527168027773-0cc890c4f42e" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="群辉docker配置Joplin Server"/></a><div class="content"><a class="title" href="/post/878a097a.html" title="群辉docker配置Joplin Server">群辉docker配置Joplin Server</a><time datetime="2021-09-07T08:09:56.000Z" title="Created 2021-09-07 16:09:56">2021-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/82d44a65.html" title="zsh配置"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1607877361964-bf792b65e593" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="zsh配置"/></a><div class="content"><a class="title" href="/post/82d44a65.html" title="zsh配置">zsh配置</a><time datetime="2021-08-23T09:21:23.000Z" title="Created 2021-08-23 17:21:23">2021-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/3383b2ac.html" title="Conda使用指南"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1577375729152-4c8b5fcda381" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Conda使用指南"/></a><div class="content"><a class="title" href="/post/3383b2ac.html" title="Conda使用指南">Conda使用指南</a><time datetime="2021-07-27T13:02:36.000Z" title="Created 2021-07-27 21:02:36">2021-07-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/fef49edf.html" title="wsl2固定ip方案"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1563089145-599997674d42" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="wsl2固定ip方案"/></a><div class="content"><a class="title" href="/post/fef49edf.html" title="wsl2固定ip方案">wsl2固定ip方案</a><time datetime="2021-07-27T12:13:46.000Z" title="Created 2021-07-27 20:13:46">2021-07-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By wkless</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

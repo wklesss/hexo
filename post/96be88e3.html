@@ -1,32 +1,185 @@
-extends includes/layout.pug
+<!DOCTYPE html><html lang="zh-Hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>markdown | kk</title><meta name="keywords" content="markdown,工具"><meta name="author" content="wkless"><meta name="copyright" content="wkless"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Markdown 编辑器语法指南基本技巧代码如果你只想高亮语句中的某个函数名或关键字，可以使用 function_name() 实现 通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 &#96;&#96;&#96; 包裹一段代码，并指定一种语言 $(document).ready(function () &amp;#123;    alert(&amp;#x27;hello world&amp;#x27;);&amp;#125;);  也可以使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="markdown">
+<meta property="og:url" content="http://example.com/post/96be88e3.html">
+<meta property="og:site_name" content="kk">
+<meta property="og:description" content="Markdown 编辑器语法指南基本技巧代码如果你只想高亮语句中的某个函数名或关键字，可以使用 function_name() 实现 通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 &#96;&#96;&#96; 包裹一段代码，并指定一种语言 $(document).ready(function () &amp;#123;    alert(&amp;#x27;hello world&amp;#x27;);&amp;#125;);  也可以使用">
+<meta property="og:locale">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/20210520184426.jpeg">
+<meta property="article:published_time" content="2021-05-19T15:11:32.000Z">
+<meta property="article:modified_time" content="2022-06-09T07:09:39.299Z">
+<meta property="article:author" content="wkless">
+<meta property="article:tag" content="markdown">
+<meta property="article:tag" content="工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/20210520184426.jpeg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/post/96be88e3"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'markdown',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-06-09 15:09:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-block content
-  #post
-    if top_img === false
-      include includes/header/post-info.pug
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-    article#article-container.post-content!=page.content
-    include includes/post/post-copyright.pug
-    .tag_share
-      if (theme.post_meta.post.tags)
-        .post-meta__tag-list
-          each item, index in page.tags.data
-            a(href=url_for(item.path)).post-meta__tags #[=item.name]
-      include includes/third-party/share/index.pug
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-    if theme.reward.enable && theme.reward.QR_code
-      !=partial('includes/post/reward', {}, {cache: true})
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/20210520184426.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">kk</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">markdown</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-05-19T15:11:32.000Z" title="Created 2021-05-19 23:11:32">2021-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-06-09T07:09:39.299Z" title="Updated 2022-06-09 15:09:39">2022-06-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">工具使用</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="markdown"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Markdown 编辑器语法指南<br>基本技巧<br>代码<br>如果你只想高亮语句中的某个函数名或关键字，可以使用 <code>function_name()</code> 实现</p>
+<p>通常编辑器根据代码片段适配合适的高亮方法，但你也可以用 ``` 包裹一段代码，并指定一种语言</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;<br>    alert(<span class="hljs-string">&#x27;hello world&#x27;</span>);<br>&#125;);<br></code></pre></td></tr></table></figure>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
-
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-      
+<p>也可以使用 4 空格缩进，再贴上代码，实现相同的的效果</p>
+<pre><code>def g(x):
+    yield from range(x, 0, -1)
+yield from range(x)
+</code></pre>
+<p>如你不需要代码高亮，可以用下面的方法禁用：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs nohighlight">```<br>标题<br>文章内容较多时，可以用标题分段：<br><br>标题1<br>======<br><br>标题2<br>-----<br><br>## 大标题 ##<br>### 小标题 ###<br>粗斜体<br>*斜体文本*    _斜体文本_<br>**粗体文本**    __粗体文本__<br>***粗斜体文本***    ___粗斜体文本___<br>链接<br>常用链接方法<br><br>文字链接 [链接名称](http://链接网址)<br>网址链接 &lt;http://链接网址&gt;<br>高级链接技巧<br><br>这个链接用 1 作为网址变量 [Google][1].<br>这个链接用 yahoo 作为网址变量 [Yahoo!][yahoo].<br>然后在文档的结尾为变量赋值（网址）<br><br>[1]: http://www.google.com/<br>[yahoo]: http://www.yahoo.com/<br>列表<br>普通无序列表<br><br>- 列表文本前使用 [减号+空格]<br>+ 列表文本前使用 [加号+空格]<br>* 列表文本前使用 [星号+空格]<br>普通有序列表<br><br>1. 列表前使用 [数字+空格]<br>2. 我们会自动帮你添加数字<br>7. 不用担心数字不对，显示的时候我们会自动把这行的 7 纠正为 3<br>列表嵌套<br><br>1. 列出所有元素：<br>    - 无序列表元素 A<br>        1. 元素 A 的有序子列表<br>    - 前面加四个空格<br>2. 列表里的多段换行：<br>    前面必须加四个空格，<br>    这样换行，整体的格式不会乱<br>3. 列表里引用：<br><br>    &gt; 前面空一行<br>    &gt; 仍然需要在 &gt;  前面加四个空格<br><br>4. 列表里代码段：<br><br></code></pre></td></tr></table></figure>
+<pre><code>前面四个空格，之后按代码语法 ``` 书写
+<figure class="highlight node-repl"><table><tr><td class="code"><pre><code class="hljs node-repl"><br>        或者直接空八个，引入代码块<br>引用<br>普通引用<br><br><span class="hljs-meta">&gt;</span> <span class="javascript">引用文本前使用 [大于号+空格]</span><br><span class="hljs-meta">&gt;</span> <span class="javascript">折行可以不加，新起一行都要加上哦</span><br>引用里嵌套引用<br><br><span class="hljs-meta">&gt;</span> <span class="javascript">最外层引用</span><br><span class="hljs-meta">&gt;</span> <span class="javascript">&gt; 多一个 &gt; 嵌套一层引用</span><br><span class="hljs-meta">&gt;</span> <span class="javascript">&gt; &gt; 可以嵌套很多层</span><br>引用里嵌套列表<br><br><span class="hljs-meta">&gt;</span> <span class="javascript">- 这是引用里嵌套的一个列表</span><br><span class="hljs-meta">&gt;</span> <span class="javascript">- 还可以有子列表</span><br><span class="hljs-meta">&gt;</span> <span class="javascript">    * 子列表需要从 - 之后延后四个空格开始</span><br>    引用里嵌套代码块<br><br><span class="hljs-meta">&gt;</span> <span class="javascript">    同样的，在前面加四个空格形成代码块</span><br><span class="hljs-meta">&gt;</span> <span class="javascript"> </span><br></code></pre></td></tr></table></figure>
+</code></pre>
+<blockquote>
+<p>或者使用 ``` 形成代码块</p>
+<pre><code>图片
+跟链接的方法区别在于前面加了个感叹号 !，这样是不是觉得好记多了呢？
+</code></pre>
+</blockquote>
+<p><code>![图片名称](http://图片网址)</code><br>当然，你也可以像网址那样对图片网址使用变量</p>
+<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/logo.png">Google</a>.<br>然后在文档的结尾位变量赋值（网址）</p>
+<p>换行<br>如果另起一行，只需在当前行结尾加 2 个空格</p>
+<p>在当前行的结尾加 2 个空格<br>这行就会新起一行<br>如果是要起一个新段落，只需要空出一行即可。</p>
+<p>分隔符<br>如果你有写分割线的习惯，可以新起一行输入三个减号-。当前后都有段落时，请空出一行：</p>
+<p>前面的段落</p>
+<hr>
+<p>后面的段落</p>
+<p>高级技巧<br>行内 HTML 元素<br>目前只支持部分段内 HTML 元素效果，包括 <kdb> <b> <i> <em> <sup> <sub> <br> ，如</p>
+<p>键位显示</p>
+<p>使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑<br>代码块</p>
+<p>使用 <pre></pre> 元素同样可以形成代码块<br>粗斜体</p>
+<p><b> Markdown 在此处同样适用，如 <em>加粗</em> </b><br>符号转义<br>如果你的描述中需要用到 markdown 的符号，比如 _ # * 等，但又不想它被转义，这时候可以在这些符号前加反斜杠，如 _ # * 进行避免。</p>
+<p>_不想这里的文本变斜体_<br>**不想这里的文本被加粗**<br>扩展<br>支持 jsfiddle、gist、runjs、优酷视频，直接填写 url，在其之后会自动添加预览点击会展开相关内容。</p>
+<p>http://{url_of_the_fiddle}/embedded/[{tabs}/[{style}]]/<br><a target="_blank" rel="noopener" href="https://gist.github.com/%7Bgist_id%7D">https://gist.github.com/{gist_id}</a><br><a target="_blank" rel="noopener" href="http://runjs.cn/detail/%7Bid%7D">http://runjs.cn/detail/{id}</a><br><a target="_blank" rel="noopener" href="http://v.youku.com/v_show/id_%7Bvideo_id%7D.html">http://v.youku.com/v_show/id_{video_id}.html</a><br>公式<br>当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：</p>
+<p>$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a}. $$</p>
+<p>$$<br>x \href{why-equal.html}{=} y^2 + 1<br>$$<br>同时也支持 HTML 属性，如：</p>
+<p>$$ (x+1)^2 = \class{hidden}{(x+1)(x+1)} $$</p>
+<p>$$<br>(x+1)^2 = \cssId{step1}{\style{visibility:hidden}{(x+1)(x+1)}}<br>$$<br>游乐场</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">wkless</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/post/96be88e3.html">http://example.com/post/96be88e3.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/markdown/">markdown</a><a class="post-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7/">工具</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/20210520184426.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/post/48e7fa72.html"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1556075798-4825dfaaf498" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">github简明教程</div></div></a></div><div class="next-post pull-right"><a href="/post/65995f2c.html"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/20210520184349.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">hexo  使用</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/post/b76c446d.html" title="高效书签管理"><img class="cover" src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/20210709102643.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-07-09</div><div class="title">高效书签管理</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">wkless</div><div class="author-info__description">学习记录网站</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">21</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/3b7b10e0.html" title="docker固定内网ip"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/202206091443862.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="docker固定内网ip"/></a><div class="content"><a class="title" href="/post/3b7b10e0.html" title="docker固定内网ip">docker固定内网ip</a><time datetime="2022-06-09T06:53:18.000Z" title="Created 2022-06-09 14:53:18">2022-06-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/878a097a.html" title="群辉docker配置Joplin Server"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1527168027773-0cc890c4f42e" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="群辉docker配置Joplin Server"/></a><div class="content"><a class="title" href="/post/878a097a.html" title="群辉docker配置Joplin Server">群辉docker配置Joplin Server</a><time datetime="2021-09-07T08:09:56.000Z" title="Created 2021-09-07 16:09:56">2021-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/82d44a65.html" title="zsh配置"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1607877361964-bf792b65e593" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="zsh配置"/></a><div class="content"><a class="title" href="/post/82d44a65.html" title="zsh配置">zsh配置</a><time datetime="2021-08-23T09:21:23.000Z" title="Created 2021-08-23 17:21:23">2021-08-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/3383b2ac.html" title="Conda使用指南"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1577375729152-4c8b5fcda381" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Conda使用指南"/></a><div class="content"><a class="title" href="/post/3383b2ac.html" title="Conda使用指南">Conda使用指南</a><time datetime="2021-07-27T13:02:36.000Z" title="Created 2021-07-27 21:02:36">2021-07-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/fef49edf.html" title="wsl2固定ip方案"><img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/photo-1563089145-599997674d42" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="wsl2固定ip方案"/></a><div class="content"><a class="title" href="/post/fef49edf.html" title="wsl2固定ip方案">wsl2固定ip方案</a><time datetime="2021-07-27T12:13:46.000Z" title="Created 2021-07-27 20:13:46">2021-07-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By wkless</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
