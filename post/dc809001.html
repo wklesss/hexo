@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		
 <title>解决wsl-remote无法连接-Blog</title>
@@ -7,9 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
-
-<link rel="stylesheet" href="/css/index.css">
-
 
 
 <meta name="keywords" content="wsl,ubuntu,vscode,">
@@ -19,28 +17,36 @@
 <script src="/js/jquery.min.js"></script>
 
 
-<script src="/js/index.js"></script>
 
+<!-- Baidu Analytics -->
+<script defer>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?c1d0c59064c43461069adb99003eabbe";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
-<script src="/js/fancybox.umd.js"></script>
-
-
-<script src="/js/fancybox-images.js"></script>
-
-
-<script src="/js/gitalk.min.js"></script>
-
-
-<script src="/js/hljs.min.js"></script>
-
-<script>hljs.initHighlightingOnLoad();</script>
 
 	<meta name="generator" content="Hexo 5.4.0"></head>
 
 	<body>
 		
+<link rel="stylesheet" href="/css/page.css">
+
+
+<link rel="stylesheet" href="/css/page_cente.css">
+
+
+<link rel="stylesheet" href="/css/atom-one-dark.css">
+
+
+<link rel="stylesheet" href="/css/header.css">
+
 	<div class="header">
-		<div class="header-top" id="header-top">
+		<div class="header-top">
 			<div class="h-left">
 				<a href="/">
 					<img src="/image/logo.png" alt="Quiet">
@@ -146,27 +152,16 @@
     </ul>
     <div class="my_foot">
         
-        <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
-            <img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+        <a target="_blank" rel="noopener" href="https://github.com/wklesss">
+            <img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/20210520185915.png" alt="Quiet主题">
         </a>
         
     </div>
 </div>
-<div class='shelter'>
+<div class='shelter'
+    style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'>
 </div>
 <style>
-    .shelter{
-        background-color: #333;
-        opacity:0.5;
-        cursor: pointer;
-        display: none; 
-        position: fixed;
-        left: 0;
-        top: 0; 
-        right: 0;
-        bottom: 0;
-        z-index: 1998;
-    }
     .sidebar {
         width: 0;
         height: 100%;
@@ -175,7 +170,7 @@
         right: 0;
         bottom: 0;
         background: #fff;
-        z-index: 1999;
+        z-index: 999;
         text-align: center;
         box-shadow: -6px 0 20px rgba(98, 94, 94, .815)
     }
@@ -253,35 +248,14 @@
 </style>
 
 <script>
-    $( function () {
-	$( '.h-right-close>svg' )
-		.click( function () {
-			$( '.sidebar' )
-				.animate( {
-					width: "66%"
-				}, 500 );
-			$( '.shelter' )
-				.fadeIn( "slow" )
-		} );
-	$( '.shelter' )
-		.click( function ( e ) {
-			$( '.sidebar' )
-				.animate( {
-					width: "0"
-				}, 500 );
-			$( '.shelter' )
-				.fadeOut( "slow" )
-		} )
-} )
-
+    $(function () { $('.h-right-close>svg').click(function () { $('.sidebar').animate({ width: "66%" }, 500); $('.shelter').fadeIn("slow") }); $('.shelter').click(function (e) { $('.sidebar').animate({ width: "0" }, 500); $('.shelter').fadeOut("slow") }) })
 </script>
-
-<div class="post">
-    <div class="post-header-background post-header-img"
-    style="background: url('https://api.ixiaowai.cn/gqapi/gqapi.php')" 
->
-    <div class="post-header-background-content">
-        <ul class="post-header-tag">
+		<script>
+			$(function () { $(window).scroll(function () { if ($(document).scrollTop() > 100) { $(".header-top").removeClass("header-move2"); $('.header-top').addClass('header-move1') } else { $(".header-top").removeClass("header-move1"); $('.header-top').addClass('header-move2') } }) });
+		</script>
+<div class="header-bg bg-content-img">
+    <div class="bg-content">
+        <ul class="tag">
             
             
             <li><a href="/tags/wsl">wsl</a></li>
@@ -292,32 +266,26 @@
             
             
         </ul>
-        
         <h1>解决wsl-remote无法连接</h1>
-        <div class="post-header-info">
-            <div class="post-header-info-author">
+        <div class="article-info">
+            <div class="article-author">
                 
-                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
-                        <path
-                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
-                            p-id="2902" fill="#ffffff"></path>
-                    </svg>
-                    
-                <span class="post-header-info-author-text"> <a href="../../about">wkless</a></span>
-                <div class="post-header-info-author-categories">
-                    
-                         <a href="../../categories/工具使用/" target="_blank" >工具使用</a>
-                    
-                </div>
+                <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                    <path
+                        d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                        p-id="2902" fill="#ffffff"></path>
+                </svg>
+                
+                <span> <a href="">wkless</a></span>
                 <p>2021-07-20 19:48:45</p>
             </div>
         </div>
     </div>
 </div>
-    <div class="post-content" id="content">
-  <div id="article" class="post-content-info">
-      <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>系统：windows10<br>linux 子系统：ubuntu18.04 LTS<br>vscode：1.42.1<br>remote-wsl：0.42.3</p>
+<div class="article-content">
+    <div id="article" class="content">
+        <h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>系统：windows10<br>linux 子系统：ubuntu18.04 LTS<br>vscode：1.42.1<br>remote-wsl：0.42.3</p>
 <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在连接 linux 子系统时报错：</p>
 <figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">sh: <span class="hljs-number">1</span>: <span class="hljs-regexp">/mnt/</span>c<span class="hljs-regexp">/Users/</span>li<span class="hljs-regexp">/.vscode/</span>extensions<span class="hljs-regexp">/ms-vscode-remote.remote-wsl-0.42.3/</span>scripts/wslServer.sh: Permission denied<br>VS Code Server <span class="hljs-keyword">for</span> WSL closed unexpectedly.<br><br></code></pre></td></tr></table></figure>
 
@@ -330,46 +298,13 @@
 <p>再次连接即可成功。</p>
 <h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode-remote-release/issues/2126">cant connect to wsl-remote</a></p>
 
-  </div>
-  <div id="gitalk-container"></div>
+    </div>
 </div>
-
-<script>
-  
-Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
-  dragToClose: true,
-  Toolbar: true,
-  closeButton: "top",
-  Image: {
-    zoom: true,
-  },
-  on: {
-    initCarousel: (fancybox) => {
-      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
-      fancybox.$container.style.setProperty(
-        "--bg-image",
-        `url("${slide.$thumb.src}")`
-      );
-    },
-    "Carousel.change": (fancybox, carousel, to, from) => {
-      const slide = carousel.slides[to];
-      fancybox.$container.style.setProperty(
-        "--bg-image",
-        `url("${slide.$thumb.src}")`
-      );
-    },
-  },
-});
-</script>
-
 <style>
     #noneimg img {
         display: none;
-        z-index: 9999;
-        /* width: 600px !important; */
-        min-width: 0%;
-        max-width: 90%;
-        max-height: 80%;
+        z-index: 109;
+        width: 600px !important;
         border-radius: 0px;
         position: fixed;
         box-shadow: 0 0 0px #c3c3c300 !important;
@@ -382,15 +317,17 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 
     @media screen and (max-width:600px) {
         #noneimg img {
-            max-width: 88%
+            width: 88%
         }
     }
 </style>
-
-    <div class="post-paging">
+<script>
+    $(function () { $('#article').click(function (e) { if (e.target.tagName == "IMG") { if ($('#nonediv').length == 0) { let MImg = `<div id='noneimg'><img src='${e.target.currentSrc}'></div>`; let MDiv = "<div id='nonediv' style='cursor: pointer;display: none; position: fixed;left: 0;top: 0; right: 0;bottom: 0;background-color: #333;opacity:0.5;z-index: 108;'></div>"; $('#article').append(MDiv); $('#article').append(MImg); $("#nonediv").fadeIn("slow"); $("#noneimg img").fadeIn("slow") } } else { if ($('#nonediv').length !== 0) { $("#noneimg ").fadeOut("slow"); $("#nonediv").fadeOut("slow"); setTimeout(function () { $('#nonediv').remove(); $('#noneimg').remove() }, 500) } } }); $('.article-content').addClass('content-move') });
+</script>
+<div class="Last-Next">
     
     <a href="/post/fc64799c.html">
-        <div class="post-paging-last">
+        <div class="last">
             <span>上一篇</span>
             <p>python安装及pip配置</p>
         </div>
@@ -399,15 +336,16 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 
     
     <a href="/post/4684b22f.html">
-        <div class="post-paging-next">
+        <div class="next">
             <span>下一篇</span>
             <p>git基于ssh的加速方法</p>
         </div>
     </a>
     
 </div>
-</div>
 		
+<link rel="stylesheet" href="/css/food.css">
+
 <div class="footer">
 	<div class="Copyright">
 		©2022 By wkless. 主题：<a
@@ -416,12 +354,15 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 	</div>
 	<div class="contact">
 		
-		<a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">
-			<img src="https://cdn.jsdelivr.net/gh/duogongneng/MyBlogImg/imggithub.png" alt="Quiet主题">
+		<a target="_blank" rel="noopener" href="https://github.com/wklesss">
+			<img src="https://cdn.jsdelivr.net/gh/wklesss/picture@latest/img/20210520185915.png" alt="Quiet主题">
 		</a>
 		
 	</div>
 </div>
+
+<script src="/js/jquery.min.js"></script>
+
 
 <script src="/js/gotop.js"></script>
 
@@ -429,19 +370,17 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 <style type="text/css">
     @media screen and (min-width: 600px) {
         .goTop>span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            width: 40px;
-            height: 40px;
+            display: block;
+            border-radius: 50%;
+            width: 66px;
+            height: 66px;
             cursor: pointer;
             opacity: 0.8;
             background: rgba(18, 24, 58, 0.06);
             text-align: center;
-            transition: border .5s;
             border: 1px solid rgba(18, 24, 58, 0.06);
 
+            transition: border .5s;
             -moz-transition: border .5s;
             /* Firefox 4 */
             -webkit-transition: border .5s;
@@ -462,8 +401,9 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
         }
 
         .goTop>span>svg {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
+            margin-top: 17.5px;
             opacity: 0.7;
         }
 
@@ -485,49 +425,11 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
     </span>
 </div>
 <script>
-    $( '#js-go_top' )
-	.gotoTop( {
-		offset: 500,
-		speed: 300,
-		animationShow: {
-			'transform': 'translate(0,0)',
-			'transition': 'transform .5s ease-in-out'
-		},
-		animationHide: {
-			'transform': 'translate(100px,0)',
-			'transition': 'transform .5s ease-in-out'
-		}
-	} );
+    $('#js-go_top').gotoTop({ offset: 500, speed: 300, animationShow: { 'transform': 'translate(0,0)', 'transition': 'transform .5s ease-in-out' }, animationHide: { 'transform': 'translate(100px,0)', 'transition': 'transform .5s ease-in-out' } });
 </script>
-
-
-<!-- Baidu Analytics -->
-<script defer>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?c1d0c59064c43461069adb99003eabbe";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-
-
-
-    <!-- Gitalk -->
-    <script>
-        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"wklesss","admin":"wklesss"}'
-        const gitalk = new Gitalk({
-            ...JSON.parse( data),
-            id:location.pathname,
-            distractionFreeMode:false
-        })
-        gitalk.render('gitalk-container')
-    </script>
-
 <script>
 	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/QiaoBug/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
 </script>
 	</body>
-</html>
 
+</html>
